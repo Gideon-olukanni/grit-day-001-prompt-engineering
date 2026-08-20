@@ -33,7 +33,7 @@ No external dependencies required.
 **Requirements:** Python 3.7+ · Any modern browser
 
 ```bash
-git clone https://github.com/[your-username]/grit-day-001-prompt-engineering
+git clone https://github.com/gideon-olukanni/grit-day-001-prompt-engineering
 cd grit-day-001-prompt-engineering
 python3 prompt_tester.py
 ```
