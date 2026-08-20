@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Engineering Workflow — GRIT Day 1</title>
+  <style>
+    :root {
+      --bg: #0a1020;
+      --surface: #121a2e;
+      --border: #25304d;
+      --text: #edf1fa;
+      --muted: #7c88a6;
+      --green: #00e676;
+      --gold: #f5c542;
+      --blue: #3b82f6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      padding: 40px 20px 80px;
+    }
+
+    header {
+      max-width: 800px;
+      margin: 0 auto 48px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+    }
+
+    .label {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    h1 span { color: var(--text); }
+
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    main { max-width: 800px; margin: 0 auto; }
+
+    .stages {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .stage {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .stage:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 48px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .stage-number {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--green);
+      flex-shrink: 0;
+      background: var(--bg);
+      z-index: 1;
+    }
+
+    .stage-content {
+      padding: 10px 0 40px;
+      flex: 1;
+    }
+
+    .stage-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .stage-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .stage-body {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .stage-body strong { color: var(--text); }
+
+    .rule {
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .anatomy {
+      margin-top: 56px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 12px;
+      background: var(--surface);
+      color: var(--gold);
+      font-weight: 600;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td { background: var(--surface); }
+
+    td:first-child { color: var(--green); font-weight: 600; }
+
+    footer {
+      max-width: 800px;
+      margin: 56px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="label">GRIT — Gideon Reality Institute of Technology — Day 1 of 1825</div>
+  <h1>Prompt Engineering <span>Workflow</span></h1>
+  <div class="meta">AI & Automation | Year 1: Foundations | Cycle 1 | August 17, 2026</div>
+</header>
+
+<main>
+
+  <div class="stages">
+
+    <div class="stage">
+      <div class="stage-number">01</div>
+      <div class="stage-content">
+        <div class="stage-title">DEFINE</div>
+        <div class="stage-subtitle">Before writing a prompt, define the task precisely.</div>
+        <div class="stage-body">
+          Answer these five questions:<br><br>
+          <strong>1.</strong> What specific output do I want?<br>
+          <strong>2.</strong> Who is the audience?<br>
+          <strong>3.</strong> What format should the output take?<br>
+          <strong>4.</strong> What are the constraints?<br>
+          <strong>5.</strong> How will I know if the output is good?
+          <div class="rule">Rule: Do not write the prompt until all five are answered.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">02</div>
+      <div class="stage-content">
+        <div class="stage-title">DRAFT</div>
+        <div class="stage-subtitle">Write a first-version prompt using the eight components.</div>
+        <div class="stage-body">
+          Context · Task · Format · Constraints · Role · Examples · Tone · Negative instructions
+          <div class="rule">Rule: A 2-minute draft beats a perfect prompt you never write.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">03</div>
+      <div class="stage-content">
+        <div class="stage-title">TEST</div>
+        <div class="stage-subtitle">Run the prompt. Read the complete output before evaluating.</div>
+        <div class="stage-body">
+          Do not interrupt mid-read. Observe everything the model produces — including what it did not produce.
+          <div class="rule">Rule: Full output first. Evaluation second.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">04</div>
+      <div class="stage-content">
+        <div class="stage-title">EVALUATE</div>
+        <div class="stage-subtitle">Score the output against the criteria you defined in Stage 1.</div>
+        <div class="stage-body">
+          Task completion · Format compliance · Accuracy · Tone · Length · Usefulness
+          <div class="rule">Rule: Be specific. "Wrong format because used bullets" — not "bad."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">05</div>
+      <div class="stage-content">
+        <div class="stage-title">REFINE</div>
+        <div class="stage-subtitle">Fix the single weakest point. Test again.</div>
+        <div class="stage-body">
+          Save every version. Change one thing per iteration. Know why you made each change.
+          <div class="rule">Rule: One change per iteration. Always.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">06</div>
+      <div class="stage-content">
+        <div class="stage-title">DOCUMENT</div>
+        <div class="stage-subtitle">Record every prompt that performs consistently well.</div>
+        <div class="stage-body">
+          Save: full prompt text · context · output type · limitations · refinement history
+          <div class="rule">Rule: Document the same day. Memory is unreliable.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">07</div>
+      <div class="stage-content">
+        <div class="stage-title">REUSE</div>
+        <div class="stage-subtitle">Convert good prompts into templates using [VARIABLE] notation.</div>
+        <div class="stage-body">
+          Every documented prompt is a permanent asset. A 1,825-day prompt library is more valuable than any single output.
+          <div class="rule">Rule: Template first, personalise second.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="anatomy">
+    <h2>Prompt Anatomy — Eight Components</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Purpose</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Context</td>
+          <td>Situational background the model needs</td>
+          <td>"You are summarising for a non-expert audience"</td>
+        </tr>
+        <tr>
+          <td>Task</td>
+          <td>The specific action with an action verb</td>
+          <td>"Explain what a neuron is"</td>
+        </tr>
+        <tr>
+          <td>Format</td>
+          <td>How the output should be structured</td>
+          <td>"Three paragraphs. No bullet points."</td>
+        </tr>
+        <tr>
+          <td>Constraints</td>
+          <td>Rules the output must follow</td>
+          <td>"Under 200 words. No jargon."</td>
+        </tr>
+        <tr>
+          <td>Examples</td>
+          <td>Demonstrations of the pattern you want</td>
+          <td>2–3 input/output pairs</td>
+        </tr>
+        <tr>
+          <td>Tone</td>
+          <td>Stylistic register</td>
+          <td>"Conversational and encouraging"</td>
+        </tr>
+        <tr>
+          <td>Negative instructions</td>
+          <td>What NOT to produce</td>
+          <td>"Do not start with 'Certainly'"</td>
+        </tr>
+        <tr>
+          <td>Role</td>
+          <td>Persona or identity for the model</td>
+          <td>"You are a senior software engineer"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<footer>
+  GRIT — Learn. Build. Teach. | Gideon Reality Institute of Technology | Day 1 of 1825
+</footer>
+
+</body>
+  </html>
